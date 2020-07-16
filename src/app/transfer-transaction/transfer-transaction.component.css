@@ -1,0 +1,182 @@
+ body {
+    font-family: 'Kanit';
+  }
+  
+  .logo-parent {
+    height: 40px;
+    width: 100%;
+  }
+  .logo {
+    height: inherit;
+    width: auto;
+    background-size: contain;
+    background-image: url("/assets/logo.jpg");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    margin-top: 1%;
+    margin-left: 4%;
+  }
+  .background {
+    height: 100%;
+    background-size: 100% 100%;
+    width: 100%;
+    background-image: url("/assets/background.jpg");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    margin-top: 1%;
+    border-top: 1.5px solid red;
+  }
+  
+  /* md-grid-tile.mat-grid-tile .mat-figure {
+    align-items: initial;
+    justify-content: initial;
+    margin-top: 50px;
+  } */
+  
+  .transfer >::ng-deep .mat-figure{
+    align-items: flex-start;
+    justify-content: initial;
+    margin-top: 50px;
+  }
+  
+  .transaction >::ng-deep .mat-figure{
+    align-items: flex-start;
+    justify-content: initial;
+    margin-top: 50px;
+  }
+  
+  .transfer-card {
+    background-color: white;
+    width: auto;
+     margin-left: 20%;
+    margin-right: 50px; 
+  }
+  
+  .transaction-card {
+    background-color: white;
+    width: 100%;
+    margin-left: 50px;
+    margin-right: 120px;
+  }
+  .card-header {
+    font-family: 'Kanit';
+    background-color: rgb(12, 131, 151);
+  }
+  .mat-card {
+    font-family: 'Kanit';
+    padding: 0px;
+  }
+  .header-image {
+    padding: 10px;
+    padding-left: 20px;
+    height: auto;
+    width: auto;
+  }
+  .mat-card-title {
+    font-family: 'Kanit';
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 60px; 
+    color: #ffffff;
+  }
+  
+  .mat-input-element {
+    font-family: 'Kanit';
+    line-height: 15px;
+    color: #747474;
+  }
+  
+  .transaction-title {
+    font-family: 'Kanit';
+    padding-left: 250px;
+    /* margin: 0 auto !important; */
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  .half-width {
+    width: 45%;
+  }
+  
+  .level {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .submit {
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    background-color: coral;
+    margin-left: 150px;
+    margin-bottom: 50px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  .mat-card-content {
+    padding: 30px;
+  }
+  
+  .button-row {
+    display: block;
+    float: right;
+  }
+  
+  .sort-txt {
+    margin: 0 25px;
+    font-weight: 600;
+  }
+  
+  .sort-button {
+    height: 35px;
+    border: 1px solid #b0b0b0;
+    color: #000000;
+    font-weight: 400;
+    padding: 10px;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  tr{
+    height: 50px;
+    border: 2px solid #b0b0b0;
+  }
+  .merchantLogo{
+      width: 30px;
+      height: 30px;
+  }
+  
+  /* tr:nth-child(odd) {
+    height: 50px;
+    border: 2px solid #b0b0b0;
+    border-left: 10px solid #ff4081;
+  }
+  
+  tr:nth-child(even) {
+    height: 50px;
+    border: 2px solid #b0b0b0;
+    border-left: 10px solid #3f51b5;
+  } */
+  
+  td {
+    padding: 10px;
+  }
+  
+  .pad-top {
+    padding-top: 20px;
+  }
+  
+  .bold-txt {
+    font-weight: 600;
+  }
+  
+  .right {
+    float: right;
+  }
+  

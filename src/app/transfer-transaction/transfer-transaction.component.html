@@ -1,0 +1,121 @@
+<div class="logo-parent">
+  <div class="logo"></div>
+</div>
+<div class="background">
+  <mat-grid-list cols="12" rowHeight="100%">
+    <mat-grid-tile [colspan]="4" [rowspan]="1" class="transfer">
+      <mat-card class="transfer-card" *ngIf="isAmountToBeSubmitted">
+        <mat-card-header class="card-header">
+          <div mat-card-avatar class="header-image">
+            <img src="assets/icons/arrows.png" />
+          </div>
+          <!-- <div class="transaction-title"> -->
+            <mat-card-title>Make a transfer</mat-card-title>
+          <!-- </div> -->
+          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <form [formGroup]="amountTransferForm" (ngSubmit)="previewAmountTransfer()">
+          <mat-card-content>
+            <mat-label class="level">FROM ACCOUNT</mat-label>
+            <mat-form-field class="full-width">
+              <input matInput value="Free checking(4692) - ${{availableAmount}}" [disabled]="true" />
+            </mat-form-field>
+            <mat-label class="level">TO ACCOUNT</mat-label>
+            <mat-form-field class="full-width">
+              <input matInput formControlName="toAccount" />
+              <mat-error
+                *ngIf="amountTransferForm.controls['toAccount'].errors !== null && amountTransferForm.controls['toAccount'].errors.required">
+                To Account is required</mat-error>
+            </mat-form-field>
+            <!-- <div *ngIf="amountTransferForm.controls['toAccount'].errors.required">To Account is required</div> -->
+            <mat-label class="level">AMOUNT</mat-label>
+            <mat-form-field class="full-width">
+              <input matInput type="number" formControlName="amount" />
+              <span matPrefix>$&nbsp;</span>
+              <mat-error
+                *ngIf="amountTransferForm.controls['amount'].errors !== null && amountTransferForm.controls['amount'].errors.required">
+                Amount is required</mat-error>
+            </mat-form-field>
+            <button mat-button type="submit" class="submit">SUBMIT</button>
+          </mat-card-content>
+        </form>
+      </mat-card>
+
+      <mat-card class="transfer-card" *ngIf="!isAmountToBeSubmitted">
+        <mat-card-header class="card-header">
+          <div mat-card-avatar class="header-image">
+            <img src="assets/icons/arrows.png" />
+          </div>
+          <!-- <div class="transaction-title"> -->
+            <mat-card-title>Preview transfer</mat-card-title>
+          <!-- </div> -->
+          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+          <mat-label class="level">FROM ACCOUNT</mat-label>
+          <mat-form-field class="full-width">
+            <input matInput value="Free checking(4692) - ${{availableAmount}}" [disabled]="true" />
+            <!-- <div>Free checking(4692) - ${{availableAmount}}</div> -->
+          </mat-form-field>
+          <mat-label class="level">TO ACCOUNT</mat-label>
+          <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="targetAccount" [disabled]="true" />
+            <!-- <div>{{targetAccount}}</div> -->
+          </mat-form-field>
+          <mat-label class="level">AMOUNT</mat-label>
+          <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="formattedAmountToBeTransferred" [disabled]="true" />
+            <!-- <div>{{amountToBeTransferred}}</div> -->
+          </mat-form-field>
+          <button mat-button class="submit" (click)="transferAmount()">TRANSFER</button>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="8" [rowspan]="1" class="transaction">
+      <mat-card class="transaction-card">
+        <mat-card-header class="card-header">
+          <div mat-card-avatar class="header-image">
+            <img src="assets/icons/briefcase.png" />
+          </div>
+          <!-- <div > -->
+            <mat-card-title class="transaction-title">Recent Transactions</mat-card-title>
+          <!-- </div> -->
+          <!-- <mat-card-title class="transaction-title">Recent Transactions</mat-card-title> -->
+          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field class="half-width">
+            <input matInput type="text" [(ngModel)]="searchText" placeholder="Search by typing"
+              (keyup)="searchForTransactions()" />
+            <button mat-button *ngIf="searchText.length > 0" matSuffix mat-icon-button aria-label="Clear"
+              (click)="searchText='';searchForTransactions();">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <div class="button-row">
+            <span class="sort-txt">Sort By</span>
+            <button class="sort-button" (click)="sortTransactionListBy('DATE')">DATE</button>
+            <button class="sort-button" (click)="sortTransactionListBy('BENEFICIARY')">BENEFICIARY</button>
+            <button class="sort-button" (click)="sortTransactionListBy('AMOUNT')">AMOUNT</button>
+          </div>
+          <div>
+            <table>
+              <tbody>
+                <tr *ngFor="let transactionObject of transactionListToBeDisplayed"
+                  style="border-left:10px solid {{transactionObject.categoryCode}}">
+                  <td>{{transactionObject.transactionDate | date:'MMM yy'}}</td>
+                  <td><img class="merchantLogo" [src]="transactionObject.merchantLogo" /></td>
+                  <td>
+                    <div class="bold-txt">{{transactionObject.merchant}}</div>
+                    <div>{{transactionObject.transactionType}}</div>
+                  </td>
+                  <td class="bold-txt right pad-top">{{transactionObject.formattedAmount}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
